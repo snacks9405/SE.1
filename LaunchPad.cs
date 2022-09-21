@@ -5,8 +5,8 @@ public class LaunchPad
 {
     public static void Main(String[] args)
     {
-        FlatDatabase.initializeDB();
-        UserInterface.mainDisplay();
+        FlatDatabase.InitializeDB();
+        UserInterface.MainDisplay();
     }
 }
 

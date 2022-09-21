@@ -4,9 +4,21 @@ namespace SE._1
 {
     public static class BusinessLogic
     {
-        public static bool addEntry(ArrayList entryArrList)
+        public static String GetList()
         {
-            if (checkEntry(entryArrList))
+            String entriesString = "";
+            if (FlatDatabase.data.Count > 0)
+            {
+                foreach (KeyValuePair<int, String> keyValPair in FlatDatabase.data)
+                {
+                    entriesString += keyValPair.Key + ". " + keyValPair.Value + "\n";
+                }
+            }
+            return entriesString;
+        }
+        public static bool AddEntry(ArrayList entryArrList)
+        {
+            if (CheckEntry(entryArrList))
             {
                 String entryString = "";
                 for (int i = 1; i < entryArrList.Count; i++)
@@ -17,23 +29,51 @@ namespace SE._1
                         entryString += entryArrList[i];
                     }
                 }
+
+                if(FlatDatabase.AddEntry(entryString, int.Parse(entryArrList[0].ToString())))
+                {
+                    FlatDatabase.CommitChanges();
+                    return true;
+
+                } else
+                {
+                    return false;
+                }
                 
-                FlatDatabase.addEntry(entryString, int.Parse(entryArrList[0].ToString()));
-                return true;
-            } else
+            }
+            else
             {
                 return false;
             }
         }
 
-        //public static String[] getList()
-        //{
+        public static void RemoveEntry(String idSelect)
+        {
+            if (int.TryParse(idSelect, out int idSelectInt))
+            {
+                if (!FlatDatabase.RemoveEntry(idSelectInt))
+                {
+                    Console.WriteLine("Failed to Delete Entry");
+                    UserInterface.BadEntry(5);
+                }
+                else
+                {
+                    Console.WriteLine("Successfuly deleted entry #{0}\n", idSelect);
+                    FlatDatabase.CommitChanges();
+                }
 
-        //}
-        public static bool checkEntry(ArrayList entry)
+            }
+            else
+            {
+                UserInterface.BadEntry(5);
+            }
+        }
+        public static bool CheckEntry(ArrayList entry)
         {
             return (entry != null);
         }
+
+
     }
 }
 
