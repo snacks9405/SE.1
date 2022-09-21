@@ -1,0 +1,15 @@
+/Users/al/Projects/SE.1/SE.1/bin/Debug/net6.0/SE.1
+/Users/al/Projects/SE.1/SE.1/bin/Debug/net6.0/SE.1.deps.json
+/Users/al/Projects/SE.1/SE.1/bin/Debug/net6.0/SE.1.runtimeconfig.json
+/Users/al/Projects/SE.1/SE.1/bin/Debug/net6.0/SE.1.dll
+/Users/al/Projects/SE.1/SE.1/bin/Debug/net6.0/SE.1.pdb
+/Users/al/Projects/SE.1/SE.1/obj/Debug/net6.0/SE.1.csproj.AssemblyReference.cache
+/Users/al/Projects/SE.1/SE.1/obj/Debug/net6.0/SE.1.GeneratedMSBuildEditorConfig.editorconfig
+/Users/al/Projects/SE.1/SE.1/obj/Debug/net6.0/SE.1.AssemblyInfoInputs.cache
+/Users/al/Projects/SE.1/SE.1/obj/Debug/net6.0/SE.1.AssemblyInfo.cs
+/Users/al/Projects/SE.1/SE.1/obj/Debug/net6.0/SE.1.csproj.CoreCompileInputs.cache
+/Users/al/Projects/SE.1/SE.1/obj/Debug/net6.0/SE.1.dll
+/Users/al/Projects/SE.1/SE.1/obj/Debug/net6.0/refint/SE.1.dll
+/Users/al/Projects/SE.1/SE.1/obj/Debug/net6.0/SE.1.pdb
+/Users/al/Projects/SE.1/SE.1/obj/Debug/net6.0/SE.1.genruntimeconfig.cache
+/Users/al/Projects/SE.1/SE.1/obj/Debug/net6.0/ref/SE.1.dll
