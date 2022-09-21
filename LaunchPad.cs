@@ -5,9 +5,8 @@ public class LaunchPad
 {
     public static void Main(String[] args)
     {
-        FlatDatabase flatDB = new FlatDatabase();
-
-        UserInterface.display();
+        FlatDatabase.initializeDB();
+        UserInterface.mainDisplay();
     }
 }
 

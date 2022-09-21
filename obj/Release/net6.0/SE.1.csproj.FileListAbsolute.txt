@@ -1,0 +1,15 @@
+C:\Users\rodri_egxtw4o\OneDrive\UWO\Semester 5\CS 341\SE.1\obj\Release\net6.0\SE.1.csproj.AssemblyReference.cache
+C:\Users\rodri_egxtw4o\OneDrive\UWO\Semester 5\CS 341\SE.1\obj\Release\net6.0\SE.1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rodri_egxtw4o\OneDrive\UWO\Semester 5\CS 341\SE.1\obj\Release\net6.0\SE.1.AssemblyInfoInputs.cache
+C:\Users\rodri_egxtw4o\OneDrive\UWO\Semester 5\CS 341\SE.1\obj\Release\net6.0\SE.1.AssemblyInfo.cs
+C:\Users\rodri_egxtw4o\OneDrive\UWO\Semester 5\CS 341\SE.1\obj\Release\net6.0\SE.1.csproj.CoreCompileInputs.cache
+C:\Users\rodri_egxtw4o\OneDrive\UWO\Semester 5\CS 341\SE.1\bin\Release\net6.0\SE.1.exe
+C:\Users\rodri_egxtw4o\OneDrive\UWO\Semester 5\CS 341\SE.1\bin\Release\net6.0\SE.1.deps.json
+C:\Users\rodri_egxtw4o\OneDrive\UWO\Semester 5\CS 341\SE.1\bin\Release\net6.0\SE.1.runtimeconfig.json
+C:\Users\rodri_egxtw4o\OneDrive\UWO\Semester 5\CS 341\SE.1\bin\Release\net6.0\SE.1.dll
+C:\Users\rodri_egxtw4o\OneDrive\UWO\Semester 5\CS 341\SE.1\bin\Release\net6.0\SE.1.pdb
+C:\Users\rodri_egxtw4o\OneDrive\UWO\Semester 5\CS 341\SE.1\obj\Release\net6.0\SE.1.dll
+C:\Users\rodri_egxtw4o\OneDrive\UWO\Semester 5\CS 341\SE.1\obj\Release\net6.0\refint\SE.1.dll
+C:\Users\rodri_egxtw4o\OneDrive\UWO\Semester 5\CS 341\SE.1\obj\Release\net6.0\SE.1.pdb
+C:\Users\rodri_egxtw4o\OneDrive\UWO\Semester 5\CS 341\SE.1\obj\Release\net6.0\SE.1.genruntimeconfig.cache
+C:\Users\rodri_egxtw4o\OneDrive\UWO\Semester 5\CS 341\SE.1\obj\Release\net6.0\ref\SE.1.dll

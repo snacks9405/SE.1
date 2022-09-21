@@ -1,45 +1,51 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Text.Json;
+
 namespace SE._1
 
 {
-    public class FlatDatabase
+    public static class FlatDatabase
     {
-        public static List<String[]> compendium = new List<String[]>();
+        const String fileName = "cwData.txt";
+        public static SortedDictionary<int, String> data;
+        static JsonSerializerOptions options = new JsonSerializerOptions { WriteIndented = true };
+        //int id = 1;
+        //string clue;
+        //string answer;
+        //int difficulty;
+        //string date;
 
-        int id = 1;
-        string clue;
-        string answer;
-        int difficulty;
-        string date;
-        FileStream readWriteGuy;
+        //string[] entry = new string[5];
 
-        string[] entry = new string[5];
-
-        public FlatDatabase()
+        public static void initializeDB()
         {
-            readWriteGuy = new FileStream("compendium.txt", FileMode.OpenOrCreate,
-            FileAccess.ReadWrite);
-            foreach (String[] line in compendium)
+
+
+            if (File.Exists(fileName))
             {
-                foreach (String pieceOfLine in line)
+                String jsonString = File.ReadAllText(fileName);
+                if (jsonString != null)
                 {
-                    readWriteGuy.WriteAsync("Compendium.txt", pieceOfLine);
-                    File.WriteAllText("Compendium.txt", pieceOfLine);
-                    File.WriteAllText("Compendium.txt", ",");
-                        }
-                File.WriteAllText("compendium.txt","\n");
+                    data = JsonSerializer.Deserialize<SortedDictionary<int, String>>(jsonString);
+                }
+                Console.WriteLine(data);
+            }
+            else
+            {
+                data = new SortedDictionary<int, String>();
             }
         }
 
-        public bool writeChanges()
+        public static void addEntry(String entryString, int entryNum)
         {
+            data.Add(entryNum, entryString);
 
+            File.WriteAllText(fileName, JsonSerializer.Serialize(data, options));
         }
 
-        public static List<String[]> Get()
-        {
-            return compendium;
-        }
+
     }
 }
 
