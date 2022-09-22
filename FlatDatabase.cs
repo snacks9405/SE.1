@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Text.Json;
+﻿using System.Text.Json;
 
 namespace SE._1
 
@@ -11,11 +8,6 @@ namespace SE._1
         const String fileName = "cwData.txt";
         public static SortedDictionary<int, String> data;
         static JsonSerializerOptions options = new JsonSerializerOptions { WriteIndented = true };
-        //int id = 1;
-        //string clue;
-        //string answer;
-        //int difficulty;
-        //string date;
 
         public static void InitializeDB()
         {

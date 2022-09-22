@@ -1,128 +1,130 @@
 ﻿using System.Collections;
-using System.Reflection.Metadata.Ecma335;
-
-namespace SE._1;
-
-public class UserInterface
+namespace SE._1
 {
-    public static void MainDisplay()
+    public static class UserInterface
     {
-        Console.WriteLine("Menu\n====\n1. List Entries\n2. Add Entry");
-        Console.WriteLine("3. Delete Entry\n4. Edit Entry\n5. Quit\nChoice: ");
-        String entryNum = Console.ReadLine();
-        int confirmedNum;
-        if (int.TryParse(entryNum, out confirmedNum))
-        {
 
-            switch (confirmedNum)
-            {
-                case 1:
-                    ListEntries();
-                    break;
-                case 2:
-                    AddEntry();
-                    break;
-                case 3:
-                    DeleteEntry();
-                    break;
-                case 4:
-                    EditEntry();
-                    break;
-                case 5:
-                    Environment.Exit(0);
-                    break;
-                default:
-                    BadEntry(0);
-                    break;
-            }
-        }
-        else
+        /// <summary>
+        /// sends primary prompt to console
+        /// </summary>
+        public static void MainDisplay()
         {
-            BadEntry(0);
+            Console.WriteLine("Menu\n====\n1. List Entries\n2. Add Entry");
+            Console.WriteLine("3. Delete Entry\n4. Edit Entry\n5. Quit\nChoice: ");
+            String entryNum = Console.ReadLine();
+            int confirmedNum;
+            if (int.TryParse(entryNum, out confirmedNum))
+            {
+
+                switch (confirmedNum)
+                {
+                    case 1:
+                        ListEntries();
+                        break;
+                    case 2:
+                        AddEntry();
+                        break;
+                    case 3:
+                        DeleteEntry();
+                        break;
+                    case 4:
+                        EditEntry();
+                        break;
+                    case 5:
+                        Environment.Exit(0);
+                        break;
+                    default:
+                        BadEntry(0);
+                        break;
+                }
+            }
+            else
+            {
+                BadEntry(0);
+                MainDisplay();
+            }
+
+        }
+
+        /// <summary>
+        /// responds to errorcode with appropriate message as outlined below
+        /// </summary>
+        /// <param name="errorCode"></param>
+        public static void BadEntry(int errorCode)
+        {
+            //0 = bad initial choice
+            //1 = bad clue length
+            //2 = bad answer length
+            //3 = bad difficulty
+            //4 = bad date
+            //5 = bad ID entry
+            String[] errorArr = { " option. Please try again :)\n", "ClueLength\n", "AnswerLength\n", "Difficulty\n", "Date\n", "EntryID\n" };
+            Console.WriteLine("Invalid " + errorArr[errorCode]);
+        }
+
+        /// <summary>
+        /// lists all current entries to console
+        /// </summary>
+        public static void ListEntries()
+        {
+            Console.WriteLine("Entries\n-------\n{0}", BusinessLogic.GetList());
             MainDisplay();
         }
 
-    }
-
-    public static void BadEntry(int errorCode)
-    {
-        const String initialChoice = " option. Please try again :)\n";
-        const String badClue = "ClueLength\n";
-        const String badAnswer = "AnswerLength\n";
-        const String badDifficulty = "Difficulty\n";
-        const String badDate = "Date\n";
-        const String badID = "EntryID\n";
-
-        Console.Write("Invalid ");
-        switch (errorCode)
+        /// <summary>
+        /// prompts user for each field of entry
+        /// </summary>
+        public static void AddEntry()
         {
-            case 0: 
-                Console.WriteLine(initialChoice);
-                break;
-            case 1:
-                Console.Write(badClue);
-                break;
-            case 2:
-                Console.Write(badAnswer);
-                break;
-            case 3:
-                Console.Write(badDifficulty);
-                break;
-            case 4:
-                Console.Write(badDate);
-                break;
-            case 5:
-                Console.Write(badID);
-                break;
-            default:
-                Console.Write("your guess is as good as mine!!\n");
-                break;
-        }
-        MainDisplay();
-    }
-    public static void ListEntries()
-    {
-        Console.WriteLine("Entries\n-------\n{0}", BusinessLogic.GetList());
-        MainDisplay();
-    }
-    public static void AddEntry()
-    {
-        ArrayList entry = new ArrayList();
-        entry.Add(FlatDatabase.GetNextAvailableID());
-        String[] addEntryPrompts = { "Clue: ", "Answer: ", "Difficulty: ", "Date: " };
-        Console.WriteLine("Adding Entry\n==============");
-        for (int i = 0; i < addEntryPrompts.Length; i++)
-        {
-            Console.Write(addEntryPrompts[i]);
-            entry.Add(Console.ReadLine());
+            ArrayList entry = new ArrayList();
+            entry.Add(FlatDatabase.GetNextAvailableID());
+            String[] addEntryPrompts = { "Clue: ", "Answer: ", "Difficulty: ", "Date (mm/dd/yyyy): " };
+            Console.WriteLine("Adding Entry\n==============");
+            for (int i = 0; i < addEntryPrompts.Length; i++)
+            {
+                Console.Write(addEntryPrompts[i]);
+                entry.Add(Console.ReadLine());
+            }
+
+            if (BusinessLogic.AddEntry(entry))
+            {
+                Console.WriteLine("Entry added successfuly!\n");
+            }
+            else
+            {
+                Console.WriteLine("Failed to write entry!\n");
+            }
+            MainDisplay();
         }
 
-        if(BusinessLogic.AddEntry(entry))
+        /// <summary>
+        /// prompts user to enter ID of entry to delete
+        /// </summary>
+        public static void DeleteEntry()
         {
-            Console.WriteLine("Entry added successfuly!");
-        } else
-        {
-            Console.WriteLine("Failed to write entry!");
+            Console.Write("Id to delete: ");
+            BusinessLogic.RemoveEntry(Console.ReadLine());
+            MainDisplay();
         }
-        MainDisplay();
+
+        /// <summary>
+        /// prompts user to enter ID of entry to modify
+        /// </summary>
+        public static void EditEntry()
+        {
+            Console.Write("Id to edit: ");
+            String entryID = Console.ReadLine();
+            if (BusinessLogic.EntryExists(entryID))
+            {
+                BusinessLogic.RemoveEntry(entryID);
+                AddEntry();
+                MainDisplay();
+            } else
+            {
+                BadEntry(5);
+            }
+            
+        }
     }
-
-    public static void DeleteEntry()
-    {
-        Console.Write("Id to delete: ");
-        BusinessLogic.RemoveEntry(Console.ReadLine());
-        MainDisplay();
-    }
-
-    public static void EditEntry()
-    {
-        Console.WriteLine("edited entry");
-        MainDisplay();
-    }
-
-
-
-
-
 
 }
